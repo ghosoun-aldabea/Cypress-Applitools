@@ -8,6 +8,11 @@ on:
 env:
     APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
     APPLITOOLS_BATCH_ID: ${{ github.sha }}
+    EYES_SERVER: ${{eyesapi.applitools.com}}
+    GITHUB_SERVER: ${{github.com}}
+    URL: ${{https://${{eyesapi.applitools.com}}/api/externals/github/servers/${{github.com}}/commit/${{ github.sha }}/complete?apiKey=${{ secrets.APPLITOOLS_API_KEY }}
+    HEADER: "Content-Type: application/json --data `{\"serverId\": ${{github.com}}, \"commitSha\": ${{ github.sha }}}`"
+    EXTRA_INFO: "-H $header  -v -L"
 
 jobs:
   run-tests:
@@ -33,4 +38,4 @@ jobs:
       - name: Update Applitools batch status 
         uses: wei/curl@v1.1.1
         with:
-          args: -d "" -X POST https://eyesapi.applitools.com/api/externals/github/servers/github.com/commit/${{ env.APPLITOOLS_BATCH_ID }}/complete?apiKey=${{ secrets.APPLITOOLS_API_KEY }}
+          args: curl -X POST $url $extraInfo
