@@ -1,7 +1,7 @@
 describe("AppTest", () => {
 
     it(`ultraFastTest`, function () {
-        // Navigate to the url we want to test
+        // Navigate to the url we want to test with applitools
         // ⭐️ Note to see visual bugs, run the test using the above URL for the 1st run.
         // but then change the above URL to https://demo.applitools.com/index_v2.html
         // (for the 2nd run)
