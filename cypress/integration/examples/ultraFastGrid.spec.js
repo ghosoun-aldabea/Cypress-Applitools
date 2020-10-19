@@ -17,7 +17,7 @@ describe("AppTest", () => {
         // https://applitools.com/docs/topics/sdk/the-eyes-sdk-check-fluent-api.html
         cy.eyesCheckWindow({
             tag: "Login Window",
-            target: 'window',
+            target: 'window 1',
             fully: true
         });
 
